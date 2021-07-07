@@ -505,7 +505,11 @@ bool confgenerator_deserialize_appconf(const uint8_t *buffer, app_configuration 
 	conf->can_mode = buffer[ind++];
 	conf->uavcan_esc_index = buffer[ind++];
 	conf->uavcan_raw_mode = buffer[ind++];
-	conf->app_to_use = buffer[ind++];
+	//APP_UART = 0x03;
+	//conf->app_to_use = buffer[ind++];
+	//固定串口功能 无法修改
+	conf->app_to_use = 0x03;
+	ind++;
 	conf->app_ppm_conf.ctrl_type = buffer[ind++];
 	conf->app_ppm_conf.pid_max_erpm = buffer_get_float32_auto(buffer, &ind);
 	conf->app_ppm_conf.hyst = buffer_get_float32_auto(buffer, &ind);
